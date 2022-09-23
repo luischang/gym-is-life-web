@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build-admin:dev": "ng build --configuration development --c --output-path= dist/default/admin",
-    "build-customer:dev": "ng build --configuration development --target customer",
+    "build-admin:dev": "ng build --configuration development --c --output-path=dist/dev/admin",
+    "build-customer:dev": "ng build --configuration development --c --output-path=dist/dev/customer",
     "start-admin:dev": "ng serve gil-admin --configuration development --port 4200",
     "start-customer:dev": "ng serve gil-customer --configuration development --port 4201"
   },
