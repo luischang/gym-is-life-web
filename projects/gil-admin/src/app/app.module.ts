@@ -36,6 +36,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
+
+import { AuthService } from 'projects/gil-lib/src/lib/auth/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+
 const MATERIAL_MODULES = [
   MatAutocompleteModule,
   MatButtonModule,
@@ -80,12 +84,13 @@ const MATERIAL_MODULES = [
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-   ReactiveFormsModule,
-    MATERIAL_MODULES  ],
+    ReactiveFormsModule,
+    HttpClientModule,
+    MATERIAL_MODULES],
   exports: [
     MATERIAL_MODULES
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
