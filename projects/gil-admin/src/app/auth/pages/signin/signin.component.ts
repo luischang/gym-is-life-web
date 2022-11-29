@@ -1,24 +1,28 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Auth } from 'projects/gil-lib/src/lib/auth/auth.model';
 import { AuthService } from 'projects/gil-lib/src/lib/auth/auth.service';
 import { catchError, throwError } from 'rxjs';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss']
 })
-export class LoginComponent implements OnInit {
-  @Input() error: string | null | undefined;
+export class SigninComponent implements OnInit {
+
+  @Input() messageResponse: string | null | undefined;
   @Output() submitEM = new EventEmitter();
   form: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
   });
+  bgColorResponse: string = ''
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
   ngOnInit(): void {
     throw new Error('Method not implemented.');
@@ -39,9 +43,18 @@ export class LoginComponent implements OnInit {
       .login(credentials))
       .pipe(catchError(err => {
         localStorage.removeItem('AccessToken')
+        this.messageResponse='Email or password invalid'
+        this.bgColorResponse = '#FF0000'
+        setTimeout( () =>{
+          this.messageResponse=undefined
+      }, 5000 );
         return throwError(err);
       })).subscribe((response: any) => {
+        this.messageResponse='Success authentication'
+        this.bgColorResponse = '#00A000'
         localStorage.setItem('AccessToken', response.accessToken)
+        this.router.navigate(['/dashboard'])
       });
   }
+
 }

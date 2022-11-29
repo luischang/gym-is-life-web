@@ -5,9 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReportComponent } from './report/report.component';
-import { AuthComponent } from './auth/auth.component';
+// import { AuthComponent }  from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './auth/login/login.component';
 import { MatCommonModule, MatRippleModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
@@ -39,6 +38,14 @@ import { MatStepperModule } from '@angular/material/stepper';
 
 import { AuthService } from 'projects/gil-lib/src/lib/auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './shared/layout/header/header.component';
+import { FooterComponent } from './shared/layout/footer/footer.component';
+import { NavbarComponent } from './shared/layout/navbar/navbar.component';
+import { DashboardComponent } from './shared/layout/dashboard/dashboard.component';
+
+import { AuthModule } from './auth/auth.module';
+import { SideNavComponent } from './shared/layout/side-nav/side-nav.component';
+import { AboutComponent } from './about/about.component';
 
 const MATERIAL_MODULES = [
   MatAutocompleteModule,
@@ -76,8 +83,15 @@ const MATERIAL_MODULES = [
   declarations: [
     AppComponent,
     ReportComponent,
-    AuthComponent,
-    LoginComponent
+    // AuthComponent,
+    // LoginComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavbarComponent,
+    DashboardComponent,
+    SideNavComponent,
+    AboutComponent,
+    // RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +100,9 @@ const MATERIAL_MODULES = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MATERIAL_MODULES],
+    MATERIAL_MODULES,
+    AuthModule
+    ],
   exports: [
     MATERIAL_MODULES
   ],

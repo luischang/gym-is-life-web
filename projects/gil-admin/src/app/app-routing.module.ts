@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
+import { AboutComponent } from './about/about.component';
 import { ReportComponent } from './report/report.component';
+import { DashboardComponent } from './shared/layout/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: AuthComponent
-  },
-  {
-    path: 'register',
-    component: AuthComponent,
-  },
-  {
     path: 'report',
     component: ReportComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   }
 ];
 

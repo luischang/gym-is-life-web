@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>Login</mat-card-title>
+  <mat-card-title>Sign In</mat-card-title>
   <mat-card-content>
     <form [formGroup] = "form" (ngSubmit)="submit()">
       <p>
@@ -14,8 +14,8 @@
         </mat-form-field>
       </p>
 
-      <p *ngIf="error" class="error">
-        {{ error }}
+      <p *ngIf="messageResponse" class="error" [style.background-color]="bgColorResponse">
+        {{ messageResponse }}
       </p>
       <div>
         <div class="button">
